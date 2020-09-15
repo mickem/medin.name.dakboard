@@ -1,0 +1,7 @@
+{
+  "main": "index.js",
+  "types": "types.d.ts",
+  "files": [
+    "index.js"
+  ]
+}

@@ -1,0 +1,72 @@
+<style type="text/css">
+.screen{-webkit-tap-highlight-color:transparent;display:flex;flex-direction:row;align-items:center;height:2em;margin-bottom:.5em;background:#eee;padding:.5em 1em;border-radius:5px}
+.screen-name{color:black;order:1;flex-grow:1;line-height:2em;padding-right:1em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.hy-tmpl-select_devices-device-input{order:2;flex-shrink:0}
+</style>
+<div id="apikey-div">
+    <fieldset id='apikey'>
+        <div id='apikey'>Api key</div>
+        <input type="input" id="apikey-input">
+        <button onclick="verifyApiKey()">Log in</button>
+    </fieldset>
+</div>
+<p id="error"></p>
+<div id="screens-div">
+    <div class="hy-tmpl-select_devices-devices">
+        <ul id="screens"></ul>
+    </div>
+</div>
+<script type="text/javascript">
+    Homey.setTitle(__('Configure Dakboard API key'));
+    document.getElementById('apikey-div').style.display = 'none';
+    
+    Homey.emit( 'get_api_key', {}, function( err, result ){
+        if (err) {
+            document.getElementById('error').innerText = 'Error' + err;
+            document.getElementById('apikey-div').style.display = 'block';
+        } else {
+            document.getElementById('apikey-input').value = result;
+            document.getElementById('apikey-div').style.display = 'block';
+            if (result !== '') {
+                verifyApiKey();
+            }
+        }
+    });
+
+    function verifyApiKey() {
+        Homey.emit( 'verify_api_key', document.getElementById('apikey-input').value, function( err, result ){
+            if (err) {
+                document.getElementById('error').innerText = 'Error' + err;
+                document.getElementById('apikey-div').style.display = 'block';
+            } else {
+                if (result) {
+                    Homey.setTitle(__('Select screen'));
+                    document.getElementById('apikey-div').style.display = 'none';
+                    const root = document.getElementById('screens')
+                    result.forEach(r => {
+                        const elem = document.createElement('label')
+                        const div = document.createElement('div')
+                        const text = document.createTextNode(r.name)
+                        div.appendChild(text);
+                        div.className ="screen-name"
+                        elem.addEventListener("click", () => selectScreen(r.id));
+                        elem.appendChild(div);
+                        elem.className ="screen"
+                        root.appendChild(elem);
+                    });
+                } else {
+                    document.getElementById('error').innerText = 'Failed to fetch screens';
+                    document.getElementById('apikey-div').style.display = 'block';
+                }
+            }
+        });
+    }
+    function selectScreen(screen) {
+        Homey.emit( 'select_screen', screen, function( err, result ){
+            if (err) {
+                document.getElementById('error').innerText = 'Error' + err;
+            } else {
+                Homey.nextView()
+            }
+        });
+    }
+</script>

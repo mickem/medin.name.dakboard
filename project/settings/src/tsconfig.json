@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "sourceMap": false,
+    "outDir": "dist",
+    "baseUrl": ".",
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "paths": {
+      "homey": [
+        "node_modules/homey-lib"
+      ]
+    }
+  },
+  "types": [
+    "webpack-env"
+  ],
+  "lib": [
+    "esnext",
+    "dom",
+    "es2015"
+  ],
+  "include": [
+    "*.ts",
+    "*.tsx",
+    "*.vue",
+    "*.html"
+  ],
+  "exclude": [
+    "**/__tests__",
+    "node_modules/**",
+    "**/app.ts"
+  ]
+}

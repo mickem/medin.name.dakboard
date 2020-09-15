@@ -1,0 +1,378 @@
+{
+  "sdk": 2,
+  "permissions": [
+    "homey:manager:api"
+  ],
+  "name": {
+    "en": "DakBoard"
+  },
+  "description": {
+    "en": "An application for updating DakBoard dashboard via the DakBoard API"
+  },
+  "category": [
+    "climate",
+    "tools"
+  ],
+  "images": {
+    "large": "assets/images/large.png",
+    "small": "assets/images/small.png"
+  },
+  "compatibility": ">=2.0.5",
+  "contributing": {
+    "donate": {
+      "paypal": {
+        "username": "michaelmedin"
+      }
+    }
+  },
+  "tags": {
+    "en": [
+      "Home",
+      "Dashboard",
+      "Tools"
+    ]
+  },
+  "source": "https://github.com/mickem/medin.name.dakboard",
+  "version": "0.0.1",
+  "id": "name.medin.dakboard",
+  "bugs": {
+    "url": "https://github.com/mickem/medin.name.dakboard/issues"
+  },
+  "author": {
+    "name": "Michael Medin",
+    "email": "michael@medin.name"
+  },
+  "flow": {
+    "triggers": [],
+    "actions": [
+      {
+        "args": [
+          {
+            "filter": "driver_id=generic-block",
+            "name": "device",
+            "title": {
+              "en": "the device for which this triggers"
+            },
+            "type": "device"
+          },
+          {
+            "name": "enabled",
+            "title": {
+              "en": "enable or disable the block"
+            },
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "enable",
+                "label": {
+                  "en": "Enable"
+                }
+              },
+              {
+                "id": "disable",
+                "label": {
+                  "en": "Disable"
+                }
+              }
+            ]
+          },
+          {
+            "name": "updateOnlyIfChanged",
+            "title": {
+              "en": "Update the device only if the value has changed"
+            },
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "always",
+                "label": {
+                  "en": "Update always"
+                }
+              },
+              {
+                "id": "changed",
+                "label": {
+                  "en": "Update if changed"
+                }
+              }
+            ]
+          },
+          {
+            "name": "refreshScreen",
+            "title": {
+              "en": "Refresh the screen after the device has updated"
+            },
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "always",
+                "label": {
+                  "en": "Refresh always"
+                }
+              },
+              {
+                "id": "no",
+                "label": {
+                  "en": "Manual refresh"
+                }
+              }
+            ]
+          }
+        ],
+        "id": "IGenericActionHandler.EnableBlock",
+        "title": {
+          "en": "Enable or disable a block"
+        }
+      },
+      {
+        "args": [
+          {
+            "filter": "driver_id=generic-block",
+            "name": "device",
+            "title": {
+              "en": "the device for which this triggers"
+            },
+            "type": "device"
+          }
+        ],
+        "id": "IGenericActionHandler.Refresh",
+        "title": {
+          "en": "Refresh the screen the block is on"
+        }
+      },
+      {
+        "args": [
+          {
+            "filter": "driver_id=text-block",
+            "name": "device",
+            "title": {
+              "en": "the device for which this triggers"
+            },
+            "type": "device"
+          },
+          {
+            "name": "enabled",
+            "title": {
+              "en": "enable or disable the block"
+            },
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "enable",
+                "label": {
+                  "en": "Enable"
+                }
+              },
+              {
+                "id": "disable",
+                "label": {
+                  "en": "Disable"
+                }
+              }
+            ]
+          },
+          {
+            "name": "updateOnlyIfChanged",
+            "title": {
+              "en": "Update the device only if the value has changed"
+            },
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "always",
+                "label": {
+                  "en": "Update always"
+                }
+              },
+              {
+                "id": "changed",
+                "label": {
+                  "en": "Update if changed"
+                }
+              }
+            ]
+          },
+          {
+            "name": "refreshScreen",
+            "title": {
+              "en": "Refresh the screen after the device has updated"
+            },
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "always",
+                "label": {
+                  "en": "Refresh always"
+                }
+              },
+              {
+                "id": "no",
+                "label": {
+                  "en": "Manual refresh"
+                }
+              }
+            ]
+          }
+        ],
+        "id": "ITextActionHandler.EnableBlock",
+        "title": {
+          "en": "Enable or disable a block"
+        }
+      },
+      {
+        "args": [
+          {
+            "filter": "driver_id=text-block",
+            "name": "device",
+            "title": {
+              "en": "the device for which this triggers"
+            },
+            "type": "device"
+          }
+        ],
+        "id": "ITextActionHandler.Refresh",
+        "title": {
+          "en": "Refresh the screen the block is on"
+        }
+      },
+      {
+        "args": [
+          {
+            "filter": "driver_id=text-block",
+            "name": "device",
+            "title": {
+              "en": "the device for which this triggers"
+            },
+            "type": "device"
+          },
+          {
+            "name": "text",
+            "title": {
+              "en": "The text to set"
+            },
+            "type": "text",
+            "example": {
+              "en": "Hello World"
+            }
+          },
+          {
+            "name": "updateOnlyIfChanged",
+            "title": {
+              "en": "Update the device only if the value has changed"
+            },
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "always",
+                "label": {
+                  "en": "Update always"
+                }
+              },
+              {
+                "id": "changed",
+                "label": {
+                  "en": "Update if changed"
+                }
+              }
+            ]
+          },
+          {
+            "name": "refreshScreen",
+            "title": {
+              "en": "Refresh the screen after the device has updated"
+            },
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "always",
+                "label": {
+                  "en": "Refresh always"
+                }
+              },
+              {
+                "id": "no",
+                "label": {
+                  "en": "Manual refresh"
+                }
+              }
+            ]
+          }
+        ],
+        "id": "ITextActionHandler.SetText",
+        "title": {
+          "en": "Update the text of a text block"
+        }
+      }
+    ]
+  },
+  "drivers": [
+    {
+      "pair": [
+        {
+          "id": "get_api_key",
+          "navigation": {
+            "next": "select_block"
+          }
+        },
+        {
+          "id": "select_block",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          },
+          "options": {
+            "singular": true
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "capabilities": [],
+      "name": {
+        "en": "Generic block"
+      },
+      "class": "other",
+      "images": {
+        "large": "/assets/drivers/generic-block/large.png",
+        "small": "/assets/drivers/generic-block/small.png"
+      },
+      "id": "generic-block"
+    },
+    {
+      "pair": [
+        {
+          "id": "get_api_key",
+          "navigation": {
+            "next": "select_block"
+          }
+        },
+        {
+          "id": "select_block",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          },
+          "options": {
+            "singular": true
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "capabilities": [],
+      "name": {
+        "en": "Text block"
+      },
+      "class": "other",
+      "images": {
+        "large": "/assets/drivers/text-block/large.png",
+        "small": "/assets/drivers/text-block/small.png"
+      },
+      "id": "text-block"
+    }
+  ]
+}

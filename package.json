@@ -1,0 +1,79 @@
+{
+  "name": "name.medin.dakboard",
+  "version": "0.0.1",
+  "description": "A dakboard client for Homey",
+  "main": "index.js",
+  "scripts": {
+    "prebuild": "cpx fake-homey/* node_modules/homey",
+    "build-settings": "cd settings && npx webpack --config settings-webpack.config.js --mode production",
+    "build-app": "cd app && npx webpack --config app-webpack.config.js --mode production && npm run compose",
+    "build-i18n": "cpx locales/* ../locales",
+    "compose": "homey-ts-composer generate --app-file app.json --action-file app/src/Actions.ts --locales locales --drivers app/src/drivers --target ../app.json",
+    "prepare": "npm run build",
+    "clean": "npx rimraf ../node_modules ../app.js ../package.json ../settings/index.html ../settings/settings.js",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A app/src && git add -A settings/src",
+    "postversion": "git push && git push --tags",
+    "build": "npm run build-settings && npm run build-app && npm run build-i18n && npm run install-dist",
+    "test": "jest --collect-coverage",
+    "format": "npm run format-app && npm run format-settings",
+    "format-app": "cd app && prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "format-settings": "cd settings && prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint-app": "cd app && tslint -p tsconfig.json",
+    "lint-settings": "cd settings && tslint -p tsconfig.json",
+    "lint": "npm run lint-app && npm run lint-settings",
+    "install-dist": "cpx package.json ..  && cd .. && npm install --no-package-lock --production"
+  },
+  "author": {
+    "name": "Michael Medin",
+    "email": "michael@medin.name"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/jest": "^24.9.1",
+    "@types/node": "^12.12.14",
+    "@types/qs": "^6.9.4",
+    "bootstrap": "^4.4.1",
+    "cpx": "^1.5.0",
+    "css-loader": "^3.2.1",
+    "homey-lib": "^2.4.5",
+    "homey-ts-composer": "^1.2.0",
+    "html-minifier": "^4.0.0",
+    "html-minifier-terser": "^5.0.2",
+    "html-webpack-inline-source-plugin": "0.0.10",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.9.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-homey-config-composer": "^1.2.0",
+    "prettier": "^1.19.1",
+    "style-loader": "^1.0.1",
+    "terser-webpack-plugin": "^2.2.2",
+    "ts-jest": "^24.2.0",
+    "ts-loader": "^6.2.1",
+    "tslint": "^5.20.1",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.7.3",
+    "url-loader": "^2.1.0",
+    "vue": "^2.6.10",
+    "vue-loader": "^15.7.2",
+    "vue-property-decorator": "^8.3.0",
+    "vue-template-compiler": "^2.6.10",
+    "vue-template-loader": "^1.0.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "dependencies": {
+    "athom-api": "^3.1.11",
+    "axios": "^0.20.0",
+    "qs": "^6.9.4"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "bugs": {
+    "url": "https://github.com/mickem/medin.name.dakboard/issues"
+  }
+}
