@@ -1,7 +1,11 @@
 {
-  "sdk": 2,
-  "permissions": [
-    "homey:manager:api"
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "name.medin.dakboard",
+  "version": "2.1.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
   ],
   "name": {
     "en": "DakBoard"
@@ -9,15 +13,16 @@
   "description": {
     "en": "An application for updating DakBoard dashboard via the DakBoard API"
   },
+  "brandColor": "#e6894b",
+  "homeyCommunityTopicId": 34684,
   "category": [
-    "climate",
     "tools"
   ],
+  "permissions": [],
   "images": {
     "large": "assets/images/large.png",
     "small": "assets/images/small.png"
   },
-  "compatibility": ">=2.0.5",
   "contributing": {
     "donate": {
       "paypal": {
@@ -33,8 +38,6 @@
     ]
   },
   "source": "https://github.com/mickem/medin.name.dakboard",
-  "version": "0.0.1",
-  "id": "name.medin.dakboard",
   "bugs": {
     "url": "https://github.com/mickem/medin.name.dakboard/issues"
   },
@@ -43,8 +46,29 @@
     "email": "michael@medin.name"
   },
   "flow": {
-    "triggers": [],
     "actions": [
+      {
+        "args": [
+          {
+            "name": "name",
+            "title": {
+              "en": "Name of metric"
+            },
+            "type": "text"
+          },
+          {
+            "name": "value",
+            "title": {
+              "en": "The value to set"
+            },
+            "type": "number"
+          }
+        ],
+        "id": "DakBoard.AddMetric",
+        "title": {
+          "en": "Update metric"
+        }
+      },
       {
         "args": [
           {
@@ -307,29 +331,6 @@
   },
   "drivers": [
     {
-      "pair": [
-        {
-          "id": "get_api_key",
-          "navigation": {
-            "next": "select_block"
-          }
-        },
-        {
-          "id": "select_block",
-          "template": "list_devices",
-          "navigation": {
-            "next": "add_devices"
-          },
-          "options": {
-            "singular": true
-          }
-        },
-        {
-          "id": "add_devices",
-          "template": "add_devices"
-        }
-      ],
-      "capabilities": [],
       "name": {
         "en": "Generic block"
       },
@@ -338,9 +339,71 @@
         "large": "/assets/drivers/generic-block/large.png",
         "small": "/assets/drivers/generic-block/small.png"
       },
-      "id": "generic-block"
+      "id": "generic-block",
+      "capabilities": [
+        "onoff",
+        "button.refresh_screen"
+      ],
+      "capabilitiesOptions": {
+        "button.refresh_screen": {
+          "maintenanceAction": true,
+          "title": {
+            "en": "Refresh screen"
+          },
+          "desc": {
+            "en": "Refresh the screen the block is on"
+          }
+        }
+      },
+      "pair": [
+        {
+          "id": "get_api_key",
+          "navigation": {
+            "next": "select_block"
+          }
+        },
+        {
+          "id": "select_block",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          },
+          "options": {
+            "singular": true
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ]
     },
     {
+      "name": {
+        "en": "Text block"
+      },
+      "class": "other",
+      "images": {
+        "large": "/assets/drivers/text-block/large.png",
+        "small": "/assets/drivers/text-block/small.png"
+      },
+      "id": "text-block",
+      "capabilities": [
+        "onoff",
+        "button.refresh_screen",
+        "text_block_text"
+      ],
+      "capabilitiesOptions": {
+        "button.refresh_screen": {
+          "maintenanceAction": true,
+          "title": {
+            "en": "Refresh screen"
+          },
+          "desc": {
+            "en": "Refresh the screen the block is on"
+          }
+        }
+      },
       "pair": [
         {
           "id": "get_api_key",
@@ -363,16 +426,32 @@
           "template": "add_devices"
         }
       ],
-      "capabilities": [],
-      "name": {
-        "en": "Text block"
-      },
-      "class": "other",
-      "images": {
-        "large": "/assets/drivers/text-block/large.png",
-        "small": "/assets/drivers/text-block/small.png"
-      },
-      "id": "text-block"
+      "settings": [
+        {
+          "id": "text",
+          "type": "text",
+          "label": {
+            "en": "Current text"
+          },
+          "value": "Random String",
+          "hint": {
+            "en": "The current text displayed on the widget"
+          }
+        }
+      ]
     }
-  ]
+  ],
+  "capabilities": {
+    "text_block_text": {
+      "type": "string",
+      "title": {
+        "en": "Text"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/assets/text.svg"
+    }
+  }
 }

@@ -7,5 +7,11 @@
   },
   "0.0.2": {
     "en": "Added description"
+  },
+  "2.0.0": {
+    "en": "Updated to support Homey Pro 2023"
+  },
+  "2.1.0": {
+    "en": "Added support for sending metrics"
   }
 }

@@ -1,0 +1,47 @@
+{
+  "id": "name.medin.dakboard",
+  "version": "2.1.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "DakBoard"
+  },
+  "description": {
+    "en": "An application for updating DakBoard dashboard via the DakBoard API"
+  },
+  "brandColor": "#e6894b",
+  "homeyCommunityTopicId": 34684,
+  "category": [
+    "tools"
+  ],
+  "permissions": [],
+  "images": {
+    "large": "assets/images/large.png",
+    "small": "assets/images/small.png"
+  },
+  "contributing": {
+    "donate": {
+      "paypal": {
+        "username": "michaelmedin"
+      }
+    }
+  },
+  "tags": {
+    "en": [
+      "Home",
+      "Dashboard",
+      "Tools"
+    ]
+  },
+  "source": "https://github.com/mickem/medin.name.dakboard",
+  "bugs": {
+    "url": "https://github.com/mickem/medin.name.dakboard/issues"
+  },
+  "author": {
+    "name": "Michael Medin",
+    "email": "michael@medin.name"
+  }
+}
