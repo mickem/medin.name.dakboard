@@ -1,0 +1,48 @@
+{
+  "name": {
+    "en": "Generic block"
+  },
+  "class": "other",
+  "images": {
+    "large": "/assets/drivers/generic-block/large.png",
+    "small": "/assets/drivers/generic-block/small.png"
+  },
+  "id": "generic-block",
+  "capabilities": [
+    "onoff",
+    "button.refresh_screen"
+  ],
+  "capabilitiesOptions": {
+    "button.refresh_screen": {
+      "maintenanceAction": true,
+      "title": {
+        "en": "Refresh screen"
+      },
+      "desc": {
+        "en": "Refresh the screen the block is on"
+      }
+    }
+  },
+  "pair": [
+    {
+      "id": "get_api_key",
+      "navigation": {
+        "next": "select_block"
+      }
+    },
+    {
+      "id": "select_block",
+      "template": "list_devices",
+      "navigation": {
+        "next": "add_devices"
+      },
+      "options": {
+        "singular": true
+      }
+    },
+    {
+      "id": "add_devices",
+      "template": "add_devices"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+    "args": [
+        {
+            "name": "name",
+            "title": {
+                "en": "Name of metric"
+            },
+            "type": "text"
+        },
+        {
+            "name": "value",
+            "title": {
+                "en": "The value to set"
+            },
+            "type": "number"
+        }
+    ],
+    "id": "DakBoard.AddMetric",
+    "title": {
+        "en": "Update metric"
+    }
+}

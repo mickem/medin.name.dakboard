@@ -1,0 +1,9 @@
+{
+    "type": "string",
+    "title": { "en": "Text" },
+    "getable": true,
+    "setable": true,
+    "uiComponent": "sensor",
+    "uiQuickAction": false,
+    "icon": "/assets/text.svg"
+  }

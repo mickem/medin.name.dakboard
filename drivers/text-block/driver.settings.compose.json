@@ -1,0 +1,9 @@
+[
+    {
+      "id": "text",
+      "type": "text",
+      "label": { "en": "Current text" },
+      "value": "Random String",
+      "hint": { "en": "The current text displayed on the widget" }
+    }
+  ]

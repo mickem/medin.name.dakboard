@@ -1,0 +1,16 @@
+{
+    "args": [
+      {
+        "filter": "driver_id=generic-block",
+        "name": "device",
+        "title": {
+          "en": "the device for which this triggers"
+        },
+        "type": "device"
+      }
+    ],
+    "id": "IGenericActionHandler.Refresh",
+    "title": {
+      "en": "Refresh the screen the block is on"
+    }
+  }

@@ -1,0 +1,68 @@
+{
+    "args": [
+      {
+        "filter": "driver_id=text-block",
+        "name": "device",
+        "title": {
+          "en": "the device for which this triggers"
+        },
+        "type": "device"
+      },
+      {
+        "name": "text",
+        "title": {
+          "en": "The text to set"
+        },
+        "type": "text",
+        "example": {
+          "en": "Hello World"
+        }
+      },
+      {
+        "name": "updateOnlyIfChanged",
+        "title": {
+          "en": "Update the device only if the value has changed"
+        },
+        "type": "dropdown",
+        "values": [
+          {
+            "id": "always",
+            "label": {
+              "en": "Update always"
+            }
+          },
+          {
+            "id": "changed",
+            "label": {
+              "en": "Update if changed"
+            }
+          }
+        ]
+      },
+      {
+        "name": "refreshScreen",
+        "title": {
+          "en": "Refresh the screen after the device has updated"
+        },
+        "type": "dropdown",
+        "values": [
+          {
+            "id": "always",
+            "label": {
+              "en": "Refresh always"
+            }
+          },
+          {
+            "id": "no",
+            "label": {
+              "en": "Manual refresh"
+            }
+          }
+        ]
+      }
+    ],
+    "id": "ITextActionHandler.SetText",
+    "title": {
+      "en": "Update the text of a text block"
+    }
+  }
